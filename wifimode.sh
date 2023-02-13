@@ -7,7 +7,8 @@ echo
 echo "Выберите параметр для запуска:"
 echo "1) Перевод адаптера в режим монитора"
 echo "2) Перевод в нормальный режим"
-echo "3) Выход"
+echo "3) Отключить wifi"
+echo "4) Выход"
 
 read doing
 case $doing in
@@ -18,6 +19,9 @@ su -c "ip link set wlan0 down; echo 4 > /sys/module/wlan/parameters/con_mode;ip 
 su -c "ip link set wlan0 down; echo 0 > /sys/module/wlan/parameters/con_mode;ip link set wlan0 up; svc wifi enable"
 ;;
 3)
+su -c "ip link set wlan0 down; echo 0 > /sys/module/wlan/parameters/con_mode;
+;;
+4)
 clear
 exit 0
 ;;
